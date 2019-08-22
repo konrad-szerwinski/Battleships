@@ -19,11 +19,13 @@ public class GameView extends View {
     private int moves = 0;
     private int playerHits = 0;
     private int enemyHits = 0;
-    private boolean playerTurn = true;
+    private boolean playerTurn;
 
     public GameView(BattleFieldModel playerBattleField, PlayerModel player) {
         this.playerBattleField = playerBattleField;
         this.player = player;
+        playerTurn = chooseStartingPlayer();
+
 
         gameService = new GameService();
         enemyBattleField = new BattleFieldModel();
@@ -183,6 +185,26 @@ public class GameView extends View {
             }
 
             System.out.print("Enemy is hitting again: ");
+        }
+    }
+
+    private boolean chooseStartingPlayer(){
+        System.out.println("Who starts the game?");
+        System.out.println("1. You    2. Enemy");
+        int choice = -1;
+        try {
+            choice = getScanner().nextInt();
+        } catch (Exception ex){
+            System.out.println("Wrong answer!");
+            return chooseStartingPlayer();
+        }
+        if (choice == 1) {
+            return true;
+        } else if (choice == 2){
+            return false;
+        } else {
+            System.out.println("Wrong answer!");
+            return chooseStartingPlayer();
         }
     }
 }
