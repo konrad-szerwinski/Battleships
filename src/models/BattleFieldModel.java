@@ -41,7 +41,7 @@ public class BattleFieldModel implements Serializable {
                 System.out.print(fields[number][i].getX());
             } else {
                 if (fields[i][number].isShip() && !fields[i][number].isHit())
-                    System.out.print("█");
+                    System.out.print("\u25A0");
 
                 else if (!fields[i][number].isShip() && fields[i][number].isHit())
                     System.out.print("*");
