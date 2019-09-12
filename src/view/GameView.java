@@ -52,10 +52,10 @@ public class GameView extends View {
                 enemyAttack();
             }
 
-            if(playerHits == 20) {
+            if (playerHits == 20) {
                 player.incrementWonGames();
                 break;
-            } else {
+            } else if (enemyHits == 20){
                 player.incrementLoseGames();
                 break;
             }
